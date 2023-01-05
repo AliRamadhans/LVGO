@@ -92,7 +92,7 @@ func (cl *Client) GetLineApplicationHeader() string {
 	case model.ApplicationType_ANDROID:
 		return fmt.Sprintf("ANDROID\t%v\tAndroid OS\t%v", cl.HeaderFactory.AndroidAppVersion, cl.HeaderFactory.AndroidVersion)
 	case model.ApplicationType_ANDROIDSECONDARY:
-		return fmt.Sprintf("ANDROIDSECONDARY\t%v\tAndroid OS\t%v", cl.HeaderFactory.AndroidLiteAppVersion, cl.HeaderFactory.AndroidVersion)
+		return fmt.Sprintf("ANDROIDSECONDARY\t%v\tAndroid OS\t%v", cl.HeaderFactory.AndroidSecondaryAppVersion, cl.HeaderFactory.AndroidVersion)
 	case model.ApplicationType_IOS:
 		return "IOS\t12.6.0\tiOS\t16.0"
 	}
@@ -104,7 +104,7 @@ func (cl *Client) GetLineUserAgentHeader() string {
 	case model.ApplicationType_ANDROID:
 		return fmt.Sprintf("Line/%v", cl.HeaderFactory.AndroidAppVersion)
 	case model.ApplicationType_ANDROIDSECONDARY:
-		return fmt.Sprintf("Line/%v %v %v", cl.HeaderFactory.AndroidLiteAppVersion, cl.ClientInfo.Device.DeviceModel, cl.HeaderFactory.AndroidVersion)
+		return fmt.Sprintf("Line/%v %v %v", cl.HeaderFactory.AndroidSecondaryAppVersion, cl.ClientInfo.Device.DeviceModel, cl.HeaderFactory.AndroidVersion)
 	case model.ApplicationType_IOS:
 		return "Line/12.6.0"
 	}
