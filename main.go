@@ -1,5 +1,9 @@
 package main
-
+//LeeVersion_BotLine
+//IDLINE : inikah_rasanya
+//IDLINE : lee_salsa04
+//GUNAKAN OTAK KANAN MU
+//Since 2022
 import (
 	"fmt"
 	"github.com/bot-sakura/frugal"
