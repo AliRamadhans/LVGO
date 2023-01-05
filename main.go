@@ -142,7 +142,7 @@ func newDefaultClient() *Client {
 		HeaderFactory: &HeaderFactory{
 			AndroidVersion:        getRandomAndroidVersion(),
 			AndroidAppVersion:     getRandomAndroidAppVersion(),
-			AndroidLiteAppVersion: getRandomAndroidSecondaryAppVersion(),
+			AndroidSecondaryAppVersion: getRandomAndroidSecondaryAppVersion(),
 		},
 		E2EEKeyStore: NewE2EEKeyStore(),
 	}
@@ -381,7 +381,7 @@ var androidSecondaryAppVersions = []string{
 
 func getRandomAndroidSecondaryAppVersion() string {
 	rand.Seed(time.Now().Unix())
-	return androidSecondaryAppVersions[rand.Intn(len(androidLiteAppVersions))]
+	return androidSecondaryAppVersions[rand.Intn(len(androidSecondaryAppVersions))]
 }
 
 type HeaderFactory struct {
