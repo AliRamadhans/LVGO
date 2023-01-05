@@ -375,19 +375,19 @@ func getRandomAndroidAppVersion() string {
 	return androidAppVersions[rand.Intn(len(androidAppVersions))]
 }
 
-var androidLiteAppVersions = []string{
+var androidSecondaryAppVersions = []string{
 	"2.17.1", "2.17.0", "2.16.0", "2.15.0",
 }
 
-func getRandomAndroidLiteAppVersion() string {
+func getRandomAndroidSecondaryAppVersion() string {
 	rand.Seed(time.Now().Unix())
-	return androidLiteAppVersions[rand.Intn(len(androidLiteAppVersions))]
+	return androidSecondaryAppVersions[rand.Intn(len(androidLiteAppVersions))]
 }
 
 type HeaderFactory struct {
 	AndroidVersion        string
 	AndroidAppVersion     string
-	AndroidLiteAppVersion string
+	androidSecondaryAppVersions string
 }
 //======== batas header_factory.go =============
 
@@ -474,6 +474,6 @@ func main() {
 				}
 			}
 		}
-		time.Sleep(time.Second * 5)
+		time.Sleep(time.Duration(250) * time.Millisecond)
 	}
 }
