@@ -91,10 +91,10 @@ func (cl *Client) GetLineApplicationHeader() string {
 	switch cl.ClientSetting.AppType {
 	case model.ApplicationType_ANDROID:
 		return fmt.Sprintf("ANDROID\t%v\tAndroid OS\t%v", cl.HeaderFactory.AndroidAppVersion, cl.HeaderFactory.AndroidVersion)
-	case model.ApplicationType_ANDROIDLITE:
-		return fmt.Sprintf("ANDROIDLITE\t%v\tAndroid OS\t%v", cl.HeaderFactory.AndroidLiteAppVersion, cl.HeaderFactory.AndroidVersion)
+	case model.ApplicationType_ANDROIDSECONDARY:
+		return fmt.Sprintf("ANDROIDSECONDARY\t%v\tAndroid OS\t%v", cl.HeaderFactory.AndroidLiteAppVersion, cl.HeaderFactory.AndroidVersion)
 	case model.ApplicationType_IOS:
-		return "IOS\t11.9.0\tiOS\t14.5.1"
+		return "IOS\t12.6.0\tiOS\t16.0"
 	}
 	panic("unsupported app type")
 }
@@ -103,10 +103,10 @@ func (cl *Client) GetLineUserAgentHeader() string {
 	switch cl.ClientSetting.AppType {
 	case model.ApplicationType_ANDROID:
 		return fmt.Sprintf("Line/%v", cl.HeaderFactory.AndroidAppVersion)
-	case model.ApplicationType_ANDROIDLITE:
-		return fmt.Sprintf("LLA/%v %v %v", cl.HeaderFactory.AndroidLiteAppVersion, cl.ClientInfo.Device.DeviceModel, cl.HeaderFactory.AndroidVersion)
+	case model.ApplicationType_ANDROIDSECONDARY:
+		return fmt.Sprintf("Line/%v %v %v", cl.HeaderFactory.AndroidLiteAppVersion, cl.ClientInfo.Device.DeviceModel, cl.HeaderFactory.AndroidVersion)
 	case model.ApplicationType_IOS:
-		return "Line/11.9.0"
+		return "Line/12.6.0"
 	}
 	panic("unsupported app type")
 }
@@ -142,7 +142,7 @@ func newDefaultClient() *Client {
 		HeaderFactory: &HeaderFactory{
 			AndroidVersion:        getRandomAndroidVersion(),
 			AndroidAppVersion:     getRandomAndroidAppVersion(),
-			AndroidLiteAppVersion: getRandomAndroidLiteAppVersion(),
+			AndroidLiteAppVersion: getRandomAndroidSecondaryAppVersion(),
 		},
 		E2EEKeyStore: NewE2EEKeyStore(),
 	}
